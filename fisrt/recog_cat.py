@@ -1,6 +1,3 @@
-from cgi import test
-from gzip import FNAME
-from termios import OFDEL
 import numpy as np
 import h5py
 import imageio
@@ -10,11 +7,11 @@ from PIL import Image
 
 
 def load_data():
-    train_dataset = h5py.File('./datasets/train_catvnoncat.h5', 'r')
+    train_dataset = h5py.File('./first/datasets/train_catvnoncat.h5', 'r')
     train_set_x_orig = np.array(train_dataset["train_set_x"])
     train_set_y_orig = np.array(train_dataset["train_set_y"])
 
-    test_dataset = h5py.File('./datasets/test_catvnoncat.h5', 'r')
+    test_dataset = h5py.File('./first/datasets/test_catvnoncat.h5', 'r')
     test_set_x_orig = np.array(test_dataset["test_set_x"])
     test_set_y_orig = np.array(test_dataset["test_set_y"])
 
@@ -87,7 +84,7 @@ d=model(train_set_x, train_set_y_orig,test_set_x,test_set_y_orig,num_iterations=
 # plt.imshow(test_set_x[:,index].reshape(64,64,3))
 # print("y="+str(test_set_y_orig[index]),"and your predicion is y = \""+classes[int(d["Y_prediction_test"][0,index])].decode("utf-8") + "\" picture.")
 # plt.show()
-image = np.array(imageio.imread("./myimage.jpeg"))
+image = np.array(imageio.imread("./first/myimage.jpeg"))
 image = np.array(Image.fromarray(image).resize((64,64)))
 plt.imshow(image)
 plt.show()
